@@ -65,6 +65,12 @@ public class President {
         this.salary = salary;
     }
 
+    @Override
+    public String toString() {
+        return "Name: " + name + "; Email: " + email + "; Cpf: " + cpf + "; Telephone: " + telephone + "; Salary: " + salary + "\n";
+
+    }
+
     public int getJuniorTax() {
         return juniorTax;
     }
