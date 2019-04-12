@@ -14,6 +14,12 @@ public class Rider extends Employee{
         this.license = license;
     }
 
+    @Override
+    public String toString() {
+        return super.toString() +
+                "Driver license: " + this.license + '\n';
+    }
+
     public static class RiderBuilder extends EmployeeBuilder {
         int license;
 
@@ -34,17 +40,17 @@ public class Rider extends Employee{
 
         @Override
         public Rider.RiderBuilder setEmail(String email) {
-            return (Rider.RiderBuilder)super.setName(email);
+            return (Rider.RiderBuilder)super.setEmail(email);
         }
 
         @Override
         public Rider.RiderBuilder setCpf(String cpf) {
-            return (Rider.RiderBuilder)super.setName(cpf);
+            return (Rider.RiderBuilder)super.setCpf(cpf);
         }
 
         @Override
         public Rider.RiderBuilder setTelephone(String telephone) {
-            return (Rider.RiderBuilder)super.setName(telephone);
+            return (Rider.RiderBuilder)super.setTelephone(telephone);
         }
 
         public Rider build(){
