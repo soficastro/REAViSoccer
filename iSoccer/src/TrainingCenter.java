@@ -13,4 +13,10 @@ public class TrainingCenter extends Resource {
     public void setNumberDorms(int numberDorms) {
         this.numberDorms = numberDorms;
     }
+
+    @Override
+    public String toString() {
+        return "Number of dorms: " + numberDorms + "\n";
+
+    }
 }
