@@ -178,7 +178,9 @@ public class Systema {
                 }
 
             } else if (option == 2) {
+                boolean done = false;
             if(players.isEmpty()) System.out.println("Wait... There's no player");
+
             else {
                 System.out.println("Enter player's email");
                 String email = input.next();
@@ -189,14 +191,16 @@ public class Systema {
                             System.out.println("To change this press 1");
                             change = input.nextInt();
                             if(change == 1) object.setApt(false);
+                            done = true;
                         } else {
                             int change = 0;
                             System.out.println("To change this press 1");
                             change = input.nextInt();
                             if(change == 1) object.setApt(true);
+                            done = true;
                         }
 
-                    } else System.out.println("We couldn't find them");
+                    } else if (!done) { System.out.println("We couldn't find them");}
                 }
             }
             } else if (option == 3) exit = true;
@@ -277,5 +281,12 @@ public class Systema {
                 exit = true;
             }
         }
+
+
     }
+
+
+
+
+
 }
