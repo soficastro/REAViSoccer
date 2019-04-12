@@ -49,7 +49,6 @@ public class Person {
     public String toString() {
         return "Name: " + name + "; Email: " + email + "; Cpf: " + cpf + "; Telephone: " + telephone + "\n";
 
-
     }
 
     public static class PersonBuilder {
