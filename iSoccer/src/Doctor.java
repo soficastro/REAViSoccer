@@ -10,6 +10,12 @@ public class Doctor extends Employee {
         return CRM;
     }
 
+    @Override
+    public String toString() {
+        return super.toString() +
+                "CRM: " + CRM + '\n';
+    }
+
     public static class DoctorBuilder extends EmployeeBuilder{
         String CRM;
 
@@ -34,17 +40,17 @@ public class Doctor extends Employee {
 
         @Override
         public Doctor.DoctorBuilder setEmail(String email) {
-            return (Doctor.DoctorBuilder)super.setName(email);
+            return (Doctor.DoctorBuilder)super.setEmail(email);
         }
 
         @Override
         public Doctor.DoctorBuilder setCpf(String cpf) {
-            return (Doctor.DoctorBuilder)super.setName(cpf);
+            return (Doctor.DoctorBuilder)super.setCpf(cpf);
         }
 
         @Override
         public Doctor.DoctorBuilder setTelephone(String telephone) {
-            return (Doctor.DoctorBuilder)super.setName(telephone);
+            return (Doctor.DoctorBuilder)super.setTelephone(telephone);
         }
 
         public Doctor build(){
