@@ -31,4 +31,10 @@ public class Stadium extends Resource {
     public void setNumberSnacks(int numberSnacks) {
         this.numberSnacks = numberSnacks;
     }
+
+    @Override
+    public String toString() {
+        return "Capacity: " + capacity + "; Number of cafeterias: " + numberSnacks + "; Number of toilets: " + numberToilets +"\n";
+
+    }
 }
