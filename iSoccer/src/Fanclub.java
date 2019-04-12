@@ -42,6 +42,7 @@ public class Fanclub extends Person {
                 address = input.next();
 
                 Fanclub fan = new Fanclub.FanclubBuilder().setAddress(address).setCpf(cpf).setEmail(email).setName(name).setTelephone(phone).setType(type).build();
+                system.fans.add(fan);
 
 
             } else if (option == 2) {
@@ -61,15 +62,42 @@ public class Fanclub extends Person {
                 String email = input.next();
                 for (Fanclub object : system.fans) {
                     if (object.getEmail().equals(email)) {
-                        System.out.println("Choose new classification 1 ELITE 2 SENIOR 3 JUNIOR");
+                        System.out.println("Ok");
                         object.paid = true;
                     }
 
                 }
-            } else System.out.println("We couldn't find them");
+            }
         }
     }
 
+    public static void fanclubReport (Systema system) {
+        System.out.println("Fans:");
+
+        if (system.fans.isEmpty()) System.out.println("Error");
+        else {
+            for (Fanclub object : system.fans) {
+                System.out.println(object.toString());
+            }
+        }
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "Contribution Value: " + this.tax + "\nStatus: " + paidToString(this.paid) + "\nRank: " + rankToString(type) + "\n";
+    }
+
+    public String paidToString(boolean paid) {
+        if(paid) return "Paid";
+        else return "Not paid";
+    }
+
+    public String rankToString (int type)
+    {
+        if(type == 3) return "Junior";
+        else if(type == 2) return "Senior";
+        else return "Elite";
+    }
 
     public static class FanclubBuilder extends Person.PersonBuilder {
 
@@ -95,18 +123,16 @@ public class Fanclub extends Person {
         }
 
         @Override
-        public FanclubBuilder setEmail(String email) {
-            return (FanclubBuilder) super.setName(email);
-        }
+        public FanclubBuilder setEmail(String email) { return (FanclubBuilder) super.setEmail(email); }
 
         @Override
         public FanclubBuilder setCpf(String cpf) {
-            return (FanclubBuilder) super.setName(cpf);
+            return (FanclubBuilder) super.setCpf(cpf);
         }
 
         @Override
         public FanclubBuilder setTelephone(String telephone) {
-            return (FanclubBuilder) super.setName(telephone);
+            return (FanclubBuilder) super.setTelephone(telephone);
         }
 
         public Fanclub build() {
