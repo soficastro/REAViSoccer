@@ -13,4 +13,9 @@ public class Bus extends Resource {
     public void setLicense(String license) {
         this.license = license;
     }
+    
+    @Override
+    public String toString() {
+        return "Vehicle license: " + license + "\n";
+    }
 }
