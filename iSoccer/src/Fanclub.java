@@ -20,7 +20,7 @@ public class Fanclub extends Person {
     public static void fanClubMenu(Systema system) {
         boolean exit = false;
         while (!exit) {
-            System.out.println("1 - Add fan 2 - Edit status 3 - Change commission based on membership level 4 - Pay 5 -Back");
+            System.out.println("1 - Add fan 2 - Change commission based on membership level 3 - Pay 4 -Back");
             Scanner input = new Scanner(System.in);
             int option = input.nextInt();
             if (option == 1) {
@@ -48,17 +48,17 @@ public class Fanclub extends Person {
             } else if (option == 2) {
                 if (system.fans.isEmpty()) System.out.println("Wait... There's no fan");
                 else {
-                    System.out.println("Enter player's email");
+                    System.out.println("Enter fan's email");
                     String email = input.next();
                     for (Fanclub object : system.fans) {
                         if (object.getEmail().equals(email)) {
                             System.out.println("Choose new classification 1 ELITE 2 SENIOR 3 JUNIOR");
                             object.type = input.nextInt();
-                        } else System.out.println("We couldn't find them");
+                        }
                     }
                 }
             } else if (option == 3) {
-                System.out.println("Enter player's email");
+                System.out.println("Enter fan's email");
                 String email = input.next();
                 for (Fanclub object : system.fans) {
                     if (object.getEmail().equals(email)) {
@@ -67,7 +67,7 @@ public class Fanclub extends Person {
                     }
 
                 }
-            }
+            } else if (option == 4) exit = true;
         }
     }
 
