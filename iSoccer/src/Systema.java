@@ -46,7 +46,7 @@ public class Systema {
 
     public boolean menu() {
         boolean exit = false;
-        Test.cadastrar(this);
+        //Test.cadastrar(this); //Uncomment to have standard data to test
         while(!exit) {
             System.out.println("Welcome to iSoccer\n 1 - Login 2 - Show report 3 - Exit");
             Scanner input = new Scanner(System.in);
