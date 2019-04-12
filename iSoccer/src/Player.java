@@ -18,12 +18,18 @@ public class Player extends Employee {
 
     public boolean isApt() {
         if (apt) System.out.println("They are apt to play!");
-        else System.out.println("They are NOT apt to play at the moment");
+        else System.out.println("They are at the medic ward at the moment");
         return apt;
     }
 
     public void setApt(boolean apt) {
         this.apt = apt;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                "Player position: " + this.position + '\n';
     }
 
 
@@ -56,18 +62,18 @@ public class Player extends Employee {
         }
 
         @Override
-        public Rider.RiderBuilder setEmail(String email) {
-            return (Rider.RiderBuilder)super.setName(email);
+        public Player.PlayerBuilder setEmail(String email) {
+            return (Player.PlayerBuilder)super.setEmail(email);
         }
 
         @Override
         public Player.PlayerBuilder setCpf(String cpf) {
-            return (Player.PlayerBuilder)super.setName(cpf);
+            return (Player.PlayerBuilder)super.setCpf(cpf);
         }
 
         @Override
         public Player.PlayerBuilder setTelephone(String telephone) {
-            return (Player.PlayerBuilder)super.setName(telephone);
+            return (Player.PlayerBuilder)super.setTelephone(telephone);
         }
 
         public Player build(){
