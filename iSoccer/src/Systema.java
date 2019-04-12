@@ -7,20 +7,20 @@ public class Systema {
     private String login = "ys";
     private String password = "2006";
 
-    private President president;
-    private Employee coach;
-    private Doctor doctor;
-    private ArrayList<Player> players;
-    private ArrayList<Rider> drivers;
-    private ArrayList<Employee> personalTrainers;
-    private ArrayList<Employee> cooks;
-    private ArrayList<Employee> lawyers;
+    protected President president;
+    protected Employee coach;
+    protected Doctor doctor;
+    protected ArrayList<Player> players;
+    protected ArrayList<Rider> drivers;
+    protected ArrayList<Employee> personalTrainers;
+    protected ArrayList<Employee> cooks;
+    protected ArrayList<Employee> lawyers;
 
     protected ArrayList<Fanclub> fans;
 
-    private TrainingCenter trainingCenter;
-    private Stadium stadium;
-    private ArrayList<Bus> vehicles;
+    protected TrainingCenter trainingCenter;
+    protected Stadium stadium;
+    protected ArrayList<Bus> vehicles;
 
     private static Systema onlyInstance;
 
@@ -40,14 +40,13 @@ public class Systema {
         this.lawyers = new ArrayList<Employee>();
         this.fans = new ArrayList<Fanclub>();
         this.vehicles = new ArrayList<Bus>();
-        this.trainingCenter.setAvailable(false);
-        this.stadium.setAvailable(false);
     }
 
 
 
     public boolean menu() {
         boolean exit = false;
+        Test.cadastrar(this);
         while(!exit) {
             System.out.println("Welcome to iSoccer\n 1 - Login 2 - Show report 3 - Exit");
             Scanner input = new Scanner(System.in);
@@ -123,7 +122,7 @@ public class Systema {
                 String name, email, cpf, phone;
                 int salary;
 
-                System.out.println("1 - President 2 - Doctor 3 - Player 4 - Rider 5 - Coach 6 - Personal trainer 7 - Cook");
+                System.out.println("1 - President 2 - Doctor 3 - Player 4 - Rider 5 - Coach 6 - Personal trainer 7 - Cook 8 - Lawyer");
                 int option1 = input.nextInt();
 
                 System.out.println("Enter name");
@@ -161,7 +160,7 @@ public class Systema {
                     apt = input.nextInt();
                     if (apt == 1) b = true;
 
-                    this.players.add(new Player.PlayerBuilder().setPosition(position).setApt(b).setName(name).setTelephone(phone).setCpf(cpf).setSalary(salary).build());
+                    this.players.add(new Player.PlayerBuilder().setPosition(position).setApt(b).setName(name).setEmail(email).setTelephone(phone).setCpf(cpf).setSalary(salary).build());
                 } else if (option1 == 4) {
                     int license;
                     System.out.println("Enter license plaque (numeric value)");
@@ -174,6 +173,8 @@ public class Systema {
                     this.personalTrainers.add( new Employee.EmployeeBuilder().setCpf(cpf).setEmail(email).setSalary(salary).setTelephone(phone).setName(name).build());
                 } else if (option == 7) {
                     this.cooks.add( new Employee.EmployeeBuilder().setCpf(cpf).setEmail(email).setSalary(salary).setTelephone(phone).setName(name).build());
+                } else if (option1 == 8) {
+                    this.lawyers.add( new Employee.EmployeeBuilder().setCpf(cpf).setEmail(email).setSalary(salary).setTelephone(phone).setName(name).build());
                 }
 
             } else if (option == 2) {
@@ -246,7 +247,35 @@ public class Systema {
     }
 
     public void showReport() {
+        boolean exit = false;
+        while(!exit) {
+            System.out.println("Show report of 1 - Employee 2 - Fans 3 - Resources 4 - All of it");
+            Scanner input = new Scanner(System.in);
+            int option = input.nextInt();
+            if (option == 1) {
 
+                Employee.employeeReport(this);
+
+                exit = true;
+
+            } else if (option == 2) {
+
+                Fanclub.fanclubReport(this);
+                exit = true;
+
+            } else if (option == 3) {
+
+                Resource.resourcesReport(this);
+                exit = true;
+
+            } else if (option == 4) {
+
+                Employee.employeeReport(this);
+                Fanclub.fanclubReport(this);
+                Resource.resourcesReport(this);
+
+                exit = true;
+            }
+        }
     }
-
 }
