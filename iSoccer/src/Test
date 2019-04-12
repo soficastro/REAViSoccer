@@ -1,0 +1,62 @@
+
+
+public class Test {
+
+    public static void cadastrar (Systema system) {
+
+        System.out.println("ADDING A A BUNCH OF THINGS");
+
+        President newPresident = President.getInstance();
+
+        newPresident.setName("G. Diego");
+        newPresident.setEmail("gd");
+        newPresident.setCpf("84764939584598");
+        newPresident.setTelephone("333333");
+        newPresident.setSalary(1000000);
+        system.president = newPresident;
+
+        system.doctor = new Doctor.DoctorBuilder().setCRM("3764-35").setName("W. Solace").setEmail("light").setCpf("835768756").setTelephone("5553355").setSalary(123456).build();
+
+        system.coach = new Employee.EmployeeBuilder().setCpf("495648").setEmail("sagittarius").setSalary(57467).setTelephone("98465").setName("C.").build();
+
+        system.players.add(new Player.PlayerBuilder().setPosition("zagueiro").setApt(true).setName("P. Jackson").setTelephone("33377333").setCpf("376475094").setSalary(396964).setEmail("sea").build());
+        system.players.add(new Player.PlayerBuilder().setPosition("libero").setApt(true).setName("A. Chase").setTelephone("33375543").setCpf("376472694").setSalary(396964).setEmail("owl").build());
+        system.players.add(new Player.PlayerBuilder().setPosition("goleiro").setApt(true).setName("F. Zhang").setTelephone("44447333").setCpf("1126475094").setSalary(367564).setEmail("panda").build());
+        system.players.add(new Player.PlayerBuilder().setPosition("volante").setApt(true).setName("J. Grace").setTelephone("33557333").setCpf("31175094").setSalary(99964).setEmail("sky").build());
+        system.players.add(new Player.PlayerBuilder().setPosition("lateral direito").setApt(true).setName("H. Levesque").setTelephone("11223333").setCpf("2146478094").setSalary(1111164).setEmail("cinnamon").build());
+        system.players.add(new Player.PlayerBuilder().setPosition("lateral esquerdo").setApt(true).setName("N. di Angelo").setTelephone("34447333").setCpf("3763375094").setSalary(387964).setEmail("ground").build());
+        system.players.add(new Player.PlayerBuilder().setPosition("ala direito").setApt(true).setName("P. McLean").setTelephone("343347333").setCpf("376345094").setSalary(33464).setEmail("beauty").build());
+        system.players.add(new Player.PlayerBuilder().setPosition("ala esquerdo").setApt(true).setName("L. Valdez").setTelephone("3455533").setCpf("3763ere5094").setSalary(383333334).setEmail("fire").build());
+        system.players.add(new Player.PlayerBuilder().setPosition("meia").setApt(true).setName("R. A. R. A.").setTelephone("332333").setCpf("3763375434094").setSalary(334344).setEmail("battle").build());
+        system.players.add(new Player.PlayerBuilder().setPosition("armador").setApt(true).setName("G. Underwood").setTelephone("332333").setCpf("37632394").setSalary(382364).setEmail("goat").build());
+        system.players.add(new Player.PlayerBuilder().setPosition("atacante").setApt(true).setName("B. di Angelo").setTelephone("34434333").setCpf("37643475094").setSalary(387343464).setEmail("angel").build());
+
+        Fanclub fan1 = new Fanclub.FanclubBuilder().setAddress("Manhattan").setCpf("867894").setEmail("paint").setName("R. E. D.").setTelephone("479564").setType(1).build();
+        Fanclub fan2 = new Fanclub.FanclubBuilder().setAddress("Long Island").setCpf("858569").setEmail("hum").setName("S. Jackson").setTelephone("376475094").setType(3).build();
+        system.fans.add(fan1);
+        system.fans.add(fan2);
+
+        system.drivers.add(new Rider.RiderBuilder().setName("C.").setEmail("boat").setCpf("746845").setTelephone("84570845").setSalary(7664).setLicense(3456789).build());
+        system.drivers.add(new Rider.RiderBuilder().setName("A.").setEmail("choffer").setCpf("749569438").setTelephone("845670486").setSalary(8366).setLicense(454875).build());
+
+        system.personalTrainers.add( new Employee.EmployeeBuilder().setCpf("8470943").setEmail("island").setSalary(8475065).setTelephone("33333333").setName("Calypso").build());
+        system.personalTrainers.add( new Employee.EmployeeBuilder().setCpf("4856468").setEmail("sky").setSalary(8459035).setTelephone("4455555").setName("Zoe").build());
+
+        system.cooks.add( new Employee.EmployeeBuilder().setCpf("846594").setEmail("wine").setSalary(49634352).setTelephone("850849999").setName("Mr D.").build());
+
+        system.lawyers.add( new Employee.EmployeeBuilder().setCpf("49786986").setEmail("libra").setSalary(100000000).setTelephone("3336676").setName("H.").build());
+
+
+        Bus newBus1 = new Bus(true, "838346");
+        Bus newBus2 = new Bus(true, "376945");
+        system.vehicles.add(newBus1);
+        system.vehicles.add(newBus2);
+
+        TrainingCenter newTrainingCenter = new TrainingCenter(true, 50);
+        system.trainingCenter = newTrainingCenter;
+
+        Stadium newStadium = new Stadium(true, 5000, 25, 10);
+        system.stadium = newStadium;
+
+    }
+}
