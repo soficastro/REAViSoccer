@@ -10,7 +10,6 @@ public class Person {
         this.email = builder.email;
         this.cpf = builder.cpf;
         this.telephone = builder.telephone;
-
     }
 
     public String getName() {
@@ -48,7 +47,6 @@ public class Person {
     @Override
     public String toString() {
         return "Name: " + name + "; Email: " + email + "; Cpf: " + cpf + "; Telephone: " + telephone + "\n";
-
     }
 
     public static class PersonBuilder {
