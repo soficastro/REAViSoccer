@@ -132,7 +132,7 @@ public class Systema {
                         String name, email, cpf, phone;
                         int salary;
 
-                        System.out.println("1 - President 2 - Doctor 3 - Player 4 - Rider 5 - Coach 6 - Personal trainer 7 - Cook 8 - Lawyer");
+                        System.out.println("1 - President (there can only be one) 2 - Doctor 3 - Player 4 - Rider 5 - Coach 6 - Personal trainer 7 - Cook 8 - Lawyer");
                         int option1 = input.nextInt();
 
                         System.out.println("Enter name");
@@ -146,13 +146,8 @@ public class Systema {
                         System.out.println("Enter salary");
                         salary = input.nextInt();
                         if (option1 == 1) {
-                            President newPresident = President.getInstance();
-
-                            newPresident.setName(name);
-                            newPresident.setEmail(email);
-                            newPresident.setCpf(cpf);
-                            newPresident.setTelephone(phone);
-                            newPresident.setSalary(salary);
+                            President newPresident = President.getInstance(name, email, cpf, phone, salary);
+                            this.president = newPresident;
 
                         } else if(option1 == 2) {
                             String crm;
@@ -306,5 +301,4 @@ public class Systema {
             }
         }
     }
-
 }
