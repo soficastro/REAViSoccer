@@ -6,13 +6,7 @@ public class Test {
 
         System.out.println("ADDING A A BUNCH OF THINGS");
 
-        President newPresident = President.getInstance();
-
-        newPresident.setName("G. Diego");
-        newPresident.setEmail("gd");
-        newPresident.setCpf("84764939584598");
-        newPresident.setTelephone("333333");
-        newPresident.setSalary(1000000);
+        President newPresident = President.getInstance("G. Diego", "gd", "12456789", "3333333333", 1111100);
         system.president = newPresident;
 
         system.doctor = new Doctor.DoctorBuilder().setCRM("3764-35").setName("W. Solace").setEmail("light").setCpf("835768756").setTelephone("5553355").setSalary(123456).build();
