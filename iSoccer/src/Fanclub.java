@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Fanclub extends Person {
@@ -17,57 +18,79 @@ public class Fanclub extends Person {
 
     }
 
+    public boolean isPaid() {
+        return paid;
+    }
+
+    public void setPaid(boolean paid) {
+        this.paid = paid;
+    }
+
     public static void fanClubMenu(Systema system) {
         boolean exit = false;
         while (!exit) {
-            System.out.println("1 - Add fan 2 - Change commission based on membership level 3 - Pay 4 -Back");
-            Scanner input = new Scanner(System.in);
-            int option = input.nextInt();
-            if (option == 1) {
+            try {
+                System.out.println("1 - Add fan 2 - Change commission based on membership level 3 - Pay 4 - Reset payment status 5 - Back");
+                Scanner input = new Scanner(System.in);
+                int option = input.nextInt();
+                if (option == 1) {
 
-                String name, email, cpf, phone, address;
+                    String name, email, cpf, phone, address;
 
-                System.out.println("1 - Elite 2 - Senior 3 - Junior");
-                int type = input.nextInt();
+                    System.out.println("1 - Elite 2 - Senior 3 - Junior");
+                    int type = input.nextInt();
 
-                System.out.println("Enter name");
-                name = input.next();
-                System.out.println("Enter email");
-                email = input.next();
-                System.out.println("Enter CPF");
-                cpf = input.next();
-                System.out.println("Enter telephone");
-                phone = input.next();
-                System.out.println("Enter address");
-                address = input.next();
+                    System.out.println("Enter name");
+                    name = input.next();
+                    System.out.println("Enter email");
+                    email = input.next();
+                    System.out.println("Enter CPF");
+                    cpf = input.next();
+                    System.out.println("Enter telephone");
+                    phone = input.next();
+                    System.out.println("Enter address");
+                    address = input.next();
 
-                Fanclub fan = new Fanclub.FanclubBuilder().setAddress(address).setCpf(cpf).setEmail(email).setName(name).setTelephone(phone).setType(type).build();
-                system.fans.add(fan);
+                    Fanclub fan = new Fanclub.FanclubBuilder().setAddress(address).setCpf(cpf).setEmail(email).setName(name).setTelephone(phone).setType(type).build();
+                    system.fans.add(fan);
 
 
-            } else if (option == 2) {
-                if (system.fans.isEmpty()) System.out.println("Wait... There's no fan");
-                else {
+                } else if (option == 2) {
+                    if (system.fans.isEmpty()) System.out.println("Wait... There's no fan");
+                    else {
+                        System.out.println("Enter fan's email");
+                        String email = input.next();
+                        for (Fanclub object : system.fans) {
+                            if (object.getEmail().equals(email)) {
+                                System.out.println("Choose new classification 1 ELITE 2 SENIOR 3 JUNIOR");
+                                object.type = input.nextInt();
+                            }
+                        }
+                    }
+                } else if (option == 3) {
                     System.out.println("Enter fan's email");
                     String email = input.next();
                     for (Fanclub object : system.fans) {
                         if (object.getEmail().equals(email)) {
-                            System.out.println("Choose new classification 1 ELITE 2 SENIOR 3 JUNIOR");
-                            object.type = input.nextInt();
+                            System.out.println("Ok");
+                            object.setPaid(true);
                         }
                     }
-                }
-            } else if (option == 3) {
-                System.out.println("Enter fan's email");
-                String email = input.next();
-                for (Fanclub object : system.fans) {
-                    if (object.getEmail().equals(email)) {
-                        System.out.println("Ok");
-                        object.paid = true;
+                } else if (option == 4) {
+                    System.out.println("Enter fan's email");
+                    String email = input.next();
+                    for (Fanclub object : system.fans) {
+                        if (object.getEmail().equals(email)) {
+                            if (!object.isPaid()) {
+                                System.out.println("Ok");
+                                object.setPaid(false);
+                            }
+                        }
                     }
-
-                }
-            } else if (option == 4) exit = true;
+                } else if (option == 5) exit = true;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input");
+            }
         }
     }
 
