@@ -32,7 +32,6 @@ public class Doctor extends Employee {
             return (DoctorBuilder)super.setSalary(salary);
         }
 
-
         @Override
         public Doctor.DoctorBuilder setName(String name) {
             return (Doctor.DoctorBuilder)super.setName(name);
