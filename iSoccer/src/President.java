@@ -11,15 +11,19 @@ public class President {
 
     private static President onlyInstance;
 
-    public static President getInstance() {
+    public static President getInstance(String name, String email, String cpf, String telephone, int salary) {
 
         if (onlyInstance == null) {
-            onlyInstance = new President();
+            onlyInstance = new President(name, email, cpf, telephone, salary);
         }
         return onlyInstance;
     }
 
-    public President() {
+    public President(String name, String email, String cpf, String telephone, int salary) {
+        this.name = name;
+        this.email = email;
+        this.telephone = telephone;
+        this.salary = salary;
         this.juniorTax = 100;
         this.seniorTax = 100;
         this.eliteTax = 1000;
